@@ -1,0 +1,264 @@
+/*Créer un header, il devra contenir les éléments suivant:
+
+Une barre affichant un message de free shipping
+Un logo (il devra posséder un max-width plus petit lorsqu’en mobile)
+Une navigation avec au moins 5 items
+Une icône de panier et une icône de recherche.
+
+En mobile, le menu doit être invisible. Un icon de hamburger devra être affiché.
+Lorsque nous cliquons sur l'icône de hamburger, le menu doit s’afficher.
+
+Utilise une police custom.
+La police devra être plus petite lorsque nous serons en mobile.
+
+Utiliser les breakpoints recommendés par tailwind*/
+
+/*mobile*/
+@font-face {
+    font-family: "Poppins black";
+    src: url(./assets/FONTS/poppins-black-webfont.woff2) format("woff2"),
+    url(./assets/FONTS/poppins-black-webfont.woff), format("woff");
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: "Poppins extra bold";
+    src: url(./assets/FONTS/poppins-extrabold-webfont.woff2) format("woff2"),
+    url(./assets/FONTS/poppins-extrabold-webfont.woff) format("woff");
+    font-weight: 800; 
+}
+
+@font-face {
+    font-family: "Poppins bold";
+    src: url(./assets/FONTS/poppins-bold-webfont.woff2) format("woff2"),
+    url(./assets/FONTS/poppins-bold-webfont.woff) format("woff"); 
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Poppins medium";
+    src: url(./assets/FONTS/poppins-medium-webfont.woff2) format("woff2"),
+    url(./assets/FONTS/poppins-medium-webfont.woff) format("woff");
+    font-weight: 500; 
+}
+
+@font-face {
+    font-family: "Poppins light";
+    src: url(./assets/FONTS/poppins-light-webfont.woff2) format("woff2"),
+    url(./assets/FONTS/poppins-light-webfont.woff) format("woff"); 
+    font-weight: 300;
+}
+
+:root {
+    --blackBrown-color: #261420;
+    --offWhite-color: #F2E8DF;
+    --beige-color: #D9A689;
+    --brown-color: #8C5042;
+    --chocolate-color: #592C28;
+    --green-color: #317c48;
+    --black-color: #0D0D0D;
+    --white-color: white;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+h1 {
+    font-family: "Poppins black";
+    font-weight: 900;
+}
+
+h2 {
+    font-family: "Poppins extra bold";
+    font-weight: 800;
+    color: var(--black-color);
+}
+
+h3 {
+    font-family: "Poppins bold";
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--black-color);
+}
+
+h4 {
+    font-family: "Poppins medium";
+    font-weight: 500;
+    color: var(--black-color);
+}
+
+h5 {
+    font-family: "Poppins light";
+    font-weight: 300;
+    color: var(--black-color);
+}
+
+.shipping {
+    margin: 0;
+    background-color: var(--green-color);
+    display: flex;
+    padding: 0.5rem;
+    justify-content: center;
+}
+
+.shipping h3 {
+    margin: 0;
+    font-family: "Poppins light";
+    font-size: 0.8rem;
+    font-weight: 300;
+    text-align: center;
+    display: flex;
+    color: var(--offWhite-color);
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--black-color);
+}
+
+.logo {
+    max-width: 100px;
+    padding-left: 1rem;
+    cursor: pointer;
+}
+
+.top-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.top-nav ul {
+    display: flex;
+    font-family: "Poppins bold";
+    font-weight: 700;
+    gap: 20px;
+    list-style: none;
+}
+
+.top-nav ul li {
+    display: none;
+}
+
+.top-nav a {
+    color: var(--offWhite-color);
+    text-decoration: none;
+}
+
+.top-nav a:hover {
+    color: var(--green-color);
+}
+
+.burger {
+    height: 30px;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.icons-nav {
+    display: flex;
+    gap: 1rem;
+    background-color: var(--offWhite-color);
+    padding: 1.2rem;
+    cursor: pointer;
+}
+
+.icons-nav img:hover {
+    filter: drop-shadow(0 0 0.75rem var(--black-color));
+}
+
+.overlay--close {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.overlay--active {
+    display: flex;
+}
+
+.burger-nav {
+    background-color: var(--offWhite-color);
+    width: fit-content;
+    display: flex;
+    align-items: start;
+    justify-content: left;
+    gap: 2.6rem;
+}
+
+.burger-nav ul {
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins bold";
+    font-weight: 700;
+    gap: 20px;
+    list-style: none;
+}
+
+.burger-nav a {
+    color: var(--black-color);
+    text-decoration: none;
+}
+
+.burger-nav a:hover {
+    color: var(--chocolate-color);
+}
+
+.burger-nav__btn--close {
+    margin: 1rem;
+    cursor: pointer;
+}
+
+main {
+    padding: 0 1rem;
+}
+
+/*tablette*/
+@media screen and (min-width: 768px) {
+
+    .shipping h3 {
+        font-size: calc(1.1rem + 0.25vw);
+        transition: 0.25s;
+    }
+
+    .burger {
+        visibility: hidden;
+        height: 0.1rem;
+    }
+
+    .top-nav ul li {
+        display: flex;
+    }
+
+    .logo {
+        max-width: 120px;
+        transition: 0.25s;
+    }
+
+    .overlay {
+        display: none;
+    }
+
+}
+
+/*desktop*/
+@media screen and (min-width: 1024px){
+    .shipping h3 {
+        font-size: 1.25rem;
+        transition: 0.25s;
+    }
+}
+
+/*desktop XL*/
+@media screen and (min-width: 1280px){
+    .shipping h3{
+        transition: 0.25s;}
+
+}
